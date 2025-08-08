@@ -12,7 +12,7 @@ Beastify is an interactive Augmented Reality (AR) website that allows users to e
 | **🎙️ Voice-Powered Learning**    | Listen to intriguing animal facts through a text-to-speech assistant.                      |
 | **🔊 Authentic Animal Sounds**    | Immerse yourself in the wild with realistic animal roars, chirps, and growls.              |
 | **📸 Capture**                    | Take stunning AR snapshots of animals in AR mode.                                          |
-| **🌍 Augmented Reality Integration** | Seamlessly place and interact with animals in your real-world surroundings.                |
+| **🌍 Augmented Reality**          | Seamlessly place and interact with animals in your real-world surroundings.                |
 | **🏝️ 360° Immersive Environments** | Transport yourself to exotic jungles, deep oceans, and vast savannahs.                     |
 | **🎮 Engaging Memory Game**       | Sharpen your mind by matching animal cards in a fun and interactive game.                  |
 
