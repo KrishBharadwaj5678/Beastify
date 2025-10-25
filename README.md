@@ -1,6 +1,8 @@
 ## 🦁 Beastify
 Beastify is an interactive Augmented Reality (AR) website that allows users to explore and interact with 3D animal models in unique and immersive ways. This project aims to provide an engaging and educational experience for users by integrating various features related to animals.
 
+![Beastify](https://github.com/KrishBharadwaj5678/Beastify/raw/main/BeastifyDemo.png)
+
 ---
 
 ## ✨ Features
