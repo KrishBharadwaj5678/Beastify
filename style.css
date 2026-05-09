@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -67,7 +67,7 @@ model-viewer {
   right: 17px;
   background-color: #ffffff;
   color: #333;
-  padding: 15px;  
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: none;
@@ -102,7 +102,8 @@ model-viewer {
 }
 
 /* Screenshot button */
-#screenshot-button, #ar-button {
+#screenshot-button,
+#ar-button {
   position: absolute;
   top: 140px;
   left: 16px;
@@ -187,7 +188,8 @@ model-viewer {
   margin: 5px;
 }
 
-.front, .back {
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -204,19 +206,19 @@ model-viewer {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;  /* Initially hide the back */
+  opacity: 0; /* Initially hide the back */
 }
 
 .memory-card.flip .back {
   transform: rotateY(0deg);
-  opacity: 1;  /* Make the back visible when flipped */
+  opacity: 1; /* Make the back visible when flipped */
 }
 
 .memory-card.flip .front {
   transform: rotateY(180deg);
 }
 
-button#close-memory-box{
+button#close-memory-box {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -246,8 +248,8 @@ button#close-memory-box{
 #memory-game-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 4 columns for 20 cards */
-  grid-template-rows: repeat(6, 1fr);    /* 5 rows */
-  gap: 10px;                             /* Adjust gap between cards */
+  grid-template-rows: repeat(6, 1fr); /* 5 rows */
+  gap: 10px; /* Adjust gap between cards */
   margin-top: 20px;
 }
 
@@ -264,7 +266,7 @@ button#close-memory-box{
   align-items: center;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform-style: preserve-3d;  /* Enable 3D flip effect */
+  transform-style: preserve-3d; /* Enable 3D flip effect */
 }
 
 /* Front side of the memory card */
@@ -323,43 +325,52 @@ button#close-memory-box{
 /* Gamepad Button */
 .gamepad-button {
   position: absolute;
-  top: 127.2px  !important;
+  top: 127.2px !important;
   right: 12px !important;
   color: #f4a261; /* Customize color */
 }
 
-#ar-button{
+#ar-button {
   top: 195px;
   left: 11px;
 }
 
-.ar-img{
+.ar-img {
   width: 36px;
   height: 36px;
 }
 
-.fa-volume-up, .fa-volume-down, .fa-code{
-  color: #f39c12
+.fa-volume-up,
+.fa-volume-down,
+.fa-code {
+  color: #f39c12;
 }
 
-.fa-camera,.fa-gamepad{
+.fa-camera,
+.fa-gamepad {
   color: #15ac54;
 }
 
-.fa-image, .fa-info-circle, .fa-info{
+.fa-image,
+.fa-info-circle,
+.fa-info {
   color: #3498db;
 }
 
-.play-btn, .pause-btn, .reset-btn{
-  padding: 6px 11px  !important;
+.play-btn,
+.pause-btn,
+.reset-btn {
+  padding: 6px 11px !important;
 }
 
-.fa-play, .fa-pause, .fa-undo{
+.fa-play,
+.fa-pause,
+.fa-undo {
   font-size: 16px;
   margin-top: 4px;
 }
 
-.i-btn{
+.i-btn {
   top: 11.4px !important;
 }
 
@@ -430,7 +441,7 @@ button#close-memory-box{
     padding: 6px;
   }
 
-  .i-btn{
+  .i-btn {
     top: 11.4px !important;
     font-size: 28px !important;
   }
@@ -445,40 +456,42 @@ button#close-memory-box{
     font-size: 28px !important;
   }
 
-  .icon-button{
+  .icon-button {
     font-size: 28px !important;
   }
 
-  .animal-name{
+  .animal-name {
     font-size: 25px !important;
   }
 
-  #animal-fact{
+  #animal-fact {
     font-size: 19px !important;
   }
 
-  .play-btn, .pause-btn, .reset-btn{
-    padding: 7px 13px  !important;
+  .play-btn,
+  .pause-btn,
+  .reset-btn {
+    padding: 7px 13px !important;
   }
 
-  .fa-play, .fa-pause, .fa-undo{
+  .fa-play,
+  .fa-pause,
+  .fa-undo {
     font-size: 19px;
     margin-top: 4px;
   }
 
-  #ar-button{
+  #ar-button {
     left: 7px;
   }
 
-  .ar-img{
+  .ar-img {
     width: 44px;
     height: 44px;
   }
-
 }
 
 @media (max-width: 480px) {
-  
   #info-box {
     width: 280px !important;
     right: 20px !important;
@@ -499,7 +512,7 @@ button#close-memory-box{
     height: 70px;
   }
 
-   /* For mobile devices */
+  /* For mobile devices */
   .icon-button {
     padding: 6px;
     font-size: 24px !important;
@@ -513,36 +526,39 @@ button#close-memory-box{
     top: 137px !important; /* Adjust position */
   }
 
-  .animal-name{
+  .animal-name {
     font-size: 22px !important;
   }
 
-  #animal-fact{
+  #animal-fact {
     font-size: 17px !important;
   }
 
-  .play-btn, .pause-btn, .reset-btn{
-    padding: 6px 12px  !important;
+  .play-btn,
+  .pause-btn,
+  .reset-btn {
+    padding: 6px 12px !important;
   }
 
-  .fa-play, .fa-pause, .fa-undo{
+  .fa-play,
+  .fa-pause,
+  .fa-undo {
     font-size: 18px;
     margin-top: 5px;
   }
 
-  .ar-img{
+  .ar-img {
     width: 40px;
     height: 40px;
   }
 
-  #ar-button{
+  #ar-button {
     left: 12px;
   }
-  
 }
 
 @media (min-width: 420px) and (max-width: 480px) {
-  .i-btn{
+  .i-btn {
     top: 11.4px !important;
   }
 
@@ -553,13 +569,10 @@ button#close-memory-box{
   .gamepad-button {
     top: 134.7px !important; /* Adjust position */
   }
-
 }
 
-
-@media (min-width: 320px) and (max-width: 420px){
-
-#memory-game-grid {
+@media (min-width: 320px) and (max-width: 420px) {
+  #memory-game-grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     margin-left: 4px !important;
@@ -569,26 +582,22 @@ button#close-memory-box{
     width: 60px;
     height: 60px;
   }
-
 }
 
-@media (min-width: 320px) and (max-width: 420px){
+@media (min-width: 320px) and (max-width: 420px) {
+  #memory-game-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin-left: 4px !important;
+  }
 
-#memory-game-grid {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  margin-left: 4px !important;
+  .memory-card {
+    width: 60px;
+    height: 60px;
+  }
 }
 
-.memory-card {
-  width: 60px;
-  height: 60px;
-}
-
-}
-
-@media (min-width: 320px) and (max-width: 360px){
-
+@media (min-width: 320px) and (max-width: 360px) {
   #memory-game-grid {
     margin-left: 3px !important;
   }
@@ -598,113 +607,118 @@ button#close-memory-box{
     height: 55px;
   }
 
-  h3.game-head{
+  h3.game-head {
     font-size: 19px;
     margin-bottom: 0px;
   }
 
-  #score{
+  #score {
     font-size: 21px;
     margin-top: 14px;
   }
 
-  #turns, #timer{
-    font-size: 14px;;
+  #turns,
+  #timer {
+    font-size: 14px;
   }
 
-  #close-memory-box{
-    right: 0px
+  #close-memory-box {
+    right: 0px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 360px) {
+  #memory-game-grid {
+    margin-left: 4px !important;
+  }
+}
+
+@media (min-width: 430px) and (max-width: 480px) {
+  #score {
+    font-size: 21px;
+    margin-top: 14px;
   }
 
+  #memory-game-grid {
+    margin-left: 11px !important;
+  }
 }
 
-@media (min-width: 350px) and (max-width: 360px){
-#memory-game-grid {
-  margin-left: 4px !important;
-}
+@media (min-width: 480px) and (max-width: 600px) {
+  #memory-game-grid {
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 13px !important;
+  }
+
+  h3.game-head {
+    font-size: 22px;
+    margin-bottom: 0px;
+  }
+
+  #score {
+    font-size: 23px;
+    margin-top: 17px;
+  }
 }
 
-@media (min-width: 430px) and (max-width: 480px){
+@media (min-width: 800px) and (max-width: 1000px) {
+  #memory-game-grid {
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 13px !important;
+  }
 
-#score{
-  font-size: 21px;
-  margin-top: 14px;
-}
+  h3.game-head {
+    font-size: 30px;
+    margin-bottom: 0px;
+  }
 
-#memory-game-grid {
-   margin-left: 11px !important;
-}
-}
+  #score {
+    font-size: 28px;
+  }
 
-@media (min-width: 480px) and (max-width: 600px){
-#memory-game-grid {
-  grid-template-columns: repeat(4, 1fr);
-  margin-left: 13px !important;
-}
+  .game-section {
+    margin: 10px;
+  }
 
-h3.game-head{
-  font-size: 22px;
-  margin-bottom: 0px;
-}
+  .memory-card {
+    width: 110px;
+    height: 110px;
+  }
 
-#score{
-  font-size: 23px;
-  margin-top: 17px;
-}
-}
+  #turns,
+  #timer {
+    font-size: 20px;
+  }
 
-@media (min-width: 800px) and (max-width: 1000px){
+  .fa-volume-up,
+  .fa-volume-down,
+  .fa-code,
+  .fa-camera,
+  .fa-gamepad,
+  .fa-image,
+  .fa-info-circle,
+  .fa-info {
+    font-size: 29px;
+  }
 
-#memory-game-grid {
-  grid-template-columns: repeat(4, 1fr);
-  margin-left: 13px !important;
-}
+  .copy-button {
+    top: 71.4px !important;
+  }
 
-h3.game-head{
-  font-size: 30px;
-  margin-bottom: 0px;
-}
+  .gamepad-button {
+    top: 131.4px !important;
+  }
 
-#score{
-  font-size: 28px;
-}
+  .i-btn {
+    top: 10.4px !important;
+  }
 
-.game-section{
-  margin: 10px;
-}
+  .ar-img {
+    width: 46px;
+    height: 46px;
+  }
 
-.memory-card {
-  width: 110px;
-  height: 110px;
-}
-
-#turns, #timer{
-  font-size: 20px;
-}
-
-.fa-volume-up, .fa-volume-down, .fa-code, .fa-camera,.fa-gamepad, .fa-image, .fa-info-circle, .fa-info{
-  font-size: 29px;
-}
-
-.copy-button{
-  top: 71.4px !important;
-}
-
-.gamepad-button{
-  top: 131.4px !important;
-}
-
-.i-btn{
-  top: 10.4px !important;
-}
-
-.ar-img{
-  width: 46px;
-  height: 46px;
-}
-
-#ar-button{
-  left: 9px;
-}
-
+  #ar-button {
+    left: 9px;
+  }
 }
