@@ -1,752 +1,128 @@
 html {
-  scroll-behavior: smooth;
+  cursor:
+    url("https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/images/cursor.png")
+      0 0,
+    default;
 }
 
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+body {
   overflow: hidden;
 }
 
-/* This keeps child nodes hidden while the element loads */
-:not(:defined) > * {
-  display: none;
+@font-face {
+  font-family: "BebasNeue";
+  src: url("../assets/fonts/BebasNeue.otf") format("opentype");
+  font-weight: 600;
 }
 
-model-viewer {
-  background-color: #eee;
-  overflow-x: hidden;
-}
-
-/* Button styles */
-.icon-button {
-  border: none;
-  background: transparent;
-  padding: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: transform 0.2s ease-in-out;
-  z-index: 10;
-}
-
-.icon-button:focus {
-  outline: none;
-}
-
-.icon-button:hover {
-  transform: scale(1.1);
-}
-
-/* Positioning for the buttons */
-#toggle-skybox-button {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  color: #4285f4;
-}
-
-#horn-button {
-  position: absolute;
-  top: 80px;
-  left: 16px;
-  color: #f4a261;
-}
-
-#info-button {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  color: #34a853;
-}
-
-#info-box {
-  position: absolute;
-  top: 68px;
-  right: 17px;
-  background-color: #ffffff;
-  color: #333;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  display: none;
-  max-width: 300px;
-  z-index: 15;
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-#info-box h3 {
-  font-family: sans-serif;
-}
-
-#info-box p {
-  font-family: sans-serif;
-}
-
-#info-box button {
-  margin-top: 10px;
-  padding: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #4285f4;
-  color: white;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-#info-box button:hover {
-  background-color: #34a853;
-}
-
-/* Screenshot button */
-#screenshot-button,
-#ar-button {
-  position: absolute;
-  top: 140px;
-  left: 16px;
-  color: #f4a261;
-}
-
-.slider {
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  position: absolute;
-  bottom: 11px;
-  margin: 0px 0px 0px 20px !important;
-}
-
-.slides {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  margin-right: 30px;
-}
-
-.slide {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  width: 88px;
-  height: 88px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fff;
-  margin-right: 12px;
-  border-radius: 10px;
-  border: none;
-  display: flex;
-}
-
-/* Slidebar */
-.slides::-webkit-scrollbar {
-  height: 6px;
-}
-
-.slides::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.slides::-webkit-scrollbar-thumb {
-  background-color: #eeeeee;
-  border-radius: 10px;
-  border: none;
-}
-
-.slides::-webkit-scrollbar-thumb:hover {
-  background-color: #eeeeee;
-}
-
-.slides::-webkit-scrollbar-thumb:active {
-  background-color: #eeeeee;
-}
-
-/* Remove scrollbar corner/background */
-.slides::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-/* Firefox */
-.slides {
-  scrollbar-width: thin;
-  scrollbar-color: #eeeeee transparent;
-}
-
-.slide.selected {
-  border: 2px solid #4285f4;
-}
-
-.slide:focus {
-  outline: none;
-}
-
-.slide:focus-visible {
-  outline: 1px solid #4285f4;
-}
-
-/* Custom scrollbar styles for modern browsers */
-.slides::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
-  height: 10px; /* Height of the horizontal scrollbar */
-}
-
-.slides::-webkit-scrollbar-track {
-  background: #f4f4f4; /* Track background */
-  border-radius: 10px; /* Rounded corners for the track */
-}
-
-.slides::-webkit-scrollbar-thumb {
-  background: gray; /* Thumb color */
-  border-radius: 10px; /* Rounded corners for the thumb */
-  border: 2px solid #f4f4f4; /* Optional: Create padding around the thumb */
-}
-
-.slides::-webkit-scrollbar-thumb:hover {
-  background: gray; /* Thumb color on hover */
-}
-
-/* Firefox scrollbar styles */
-.slides {
-  scrollbar-width: thin; /* Make the scrollbar thin */
-  scrollbar-color: gray; /* Thumb color and track color */
-}
-
-/* Memory Card */
-.memory-card {
-  perspective: 1000px;
-  margin: 5px;
-}
-
-.front,
-.back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 5px; /* Optional: for rounded corners */
-}
-
-.front {
-  background-color: #fff;
-}
-
-.back {
-  transform: rotateY(180deg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0; /* Initially hide the back */
-}
-
-.memory-card.flip .back {
-  transform: rotateY(0deg);
-  opacity: 1; /* Make the back visible when flipped */
-}
-
-.memory-card.flip .front {
-  transform: rotateY(180deg);
-}
-
-button#close-memory-box {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-}
-
-/* Memory Box */
-.memory-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
-  display: none;
-  width: 80%;
-  max-width: 700px; /* Adjust width */
-  height: 90%;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  overflow: auto;
-}
-
-/* Grid Layout for 20 cards */
-#memory-game-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 4 columns for 20 cards */
-  grid-template-rows: repeat(6, 1fr); /* 5 rows */
-  gap: 9px; /* Adjust gap between cards */
-  margin-top: 20px;
-}
-
-/* Individual memory card */
-.memory-card {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform-style: preserve-3d; /* Enable 3D flip effect */
-}
-
-/* Front side of the memory card */
-.memory-card .front {
-  width: 100%;
-  height: 100%;
-  background-color: #444;
-  border-radius: 8px;
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-/* Back side of the memory card */
-.memory-card .back {
+.blob {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
+  transform: translate(-140px, -55px) scale(1.3);
+  width: 300px;
+  height: 300px;
+  background: #d8952b;
+  /* Blob */
+  aspect-ratio: 1;
+  clip-path: shape(
+    from 20.17% 53.54%,
+    curve to 16.73% 35.16% with 17.08% 45.84%,
+    smooth to 24.33% 16.16%,
+    smooth to 42.83% 15.5%,
+    smooth to 62.14% 22.83%,
+    smooth to 79.69% 28.15%,
+    smooth to 93.39% 44.96%,
+    smooth to 84.78% 61.13%,
+    smooth to 70.16% 80.72%,
+    smooth to 57.12% 91.66%,
+    smooth to 40.35% 78.55%,
+    smooth to 29.39% 65.16%,
+    smooth to 20.17% 53.54%
+  );
+}
+
+.wavy {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: -470px;
+  rotate: 300deg;
+  scale: 3;
   width: 100%;
-  height: 100%;
-  background-color: white;
-  border-radius: 8px;
-  visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backface-visibility: hidden;
-  transform: rotateY(180deg); /* Flip back to back */
+  height: 400px;
+  background: #d8952b;
+  /* Blob */
+  clip-path: shape(
+    from 0 100%,
+    vline to 100px,
+    curve to 15% 144px with 10% 191px,
+    smooth to 25% 127px,
+    smooth to 35% 155.5px,
+    smooth to 45% 175.5px,
+    smooth to 55% 157px,
+    smooth to 65% 61.5px,
+    smooth to 75% 74.5px,
+    smooth to 85% 107px,
+    smooth to 100% 100px,
+    vline to 100%,
+    hline to 0
+  );
 }
 
-/* Flip the card to reveal the back side */
-.memory-card.flip .back {
-  visibility: visible;
+.heading {
+  font-family: "BebasNeue";
+  line-height: 1.1;
 }
 
-/* Prevent image overflow, ensure proper scaling */
-.memory-card img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  border-radius: 5px;
+.subhead {
+  font-family: "Poppins", sans-serif;
 }
 
-/* Flip animation styles */
-.memory-card.flip .front {
-  transform: rotateY(180deg);
+/* Explore Now Button */
+button {
+  --color: #d8952b;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  position: relative;
+  cursor:
+    url("https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/images/pointer.png")
+      0 0,
+    default;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
 }
 
-/* Share Button */
-.share-button {
+button:before {
+  content: "";
   position: absolute;
-  top: 69px !important;
-  right: 19px !important;
-  font-size: 25px !important;
-  color: #f4a261; /* Customize color */
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
 }
 
-/* Gamepad Button */
-.gamepad-button {
-  position: absolute;
-  top: 127.2px !important;
-  right: 12px !important;
-  color: #f4a261; /* Customize color */
+button:hover {
+  color: #fff;
 }
 
-#ar-button {
-  top: 195px;
-  left: 11px;
+button:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
 }
 
-.ar-img {
-  width: 36px;
-  height: 36px;
-}
-
-.fa-volume-up,
-.fa-volume-down,
-.fa-code {
-  color: #f39c12;
-}
-
-.fa-camera,
-.fa-gamepad {
-  color: #15ac54;
-}
-
-.fa-image,
-.fa-info-circle,
-.fa-info {
-  color: #3498db;
-}
-
-.play-btn,
-.reset-btn {
-  padding: 6px 11px !important;
-}
-
-.fa-play,
-.fa-undo {
-  font-size: 16px;
-  margin-top: 4px;
-}
-
-.i-btn {
-  top: 11.4px !important;
-}
-
-/* Custom scrollbar styles */
-#memory-box::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
-}
-
-#memory-box::-webkit-scrollbar-thumb {
-  background-color: #555; /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
-  border: 2px solid #222; /* Border around the thumb */
-}
-
-#memory-box::-webkit-scrollbar-track {
-  background-color: #333; /* Color of the track */
-  border-radius: 10px; /* Rounded corners for the track */
-}
-
-/* When hovered, change the scrollbar thumb color */
-#memory-box::-webkit-scrollbar-thumb:hover {
-  background-color: #777; /* Lighten the color of the thumb on hover */
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-  /* Adjust button sizes and positions */
-  #toggle-skybox-button,
-  #horn-button,
-  #info-button,
-  #screenshot-button {
-    font-size: 20px;
-    padding: 8px;
-  }
-
-  .slider {
-    bottom: 10px;
-    margin: 0px;
-  }
-
-  .slides {
-    margin-right: 10px;
-    margin-left: 20px;
-  }
-
-  .slide {
-    width: 70px;
-    height: 70px;
-  }
-
-  .memory-box {
-    width: 90%;
-    height: 80%;
-  }
-
-  #memory-game-grid {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    margin-left: 6px;
-  }
-
-  .memory-card {
-    width: 80px;
-    height: 80px;
-  }
-
-  #info-box button {
-    padding: 6px;
-  }
-
-  .i-btn {
-    top: 11.4px !important;
-    font-size: 28px !important;
-  }
-
-  .share-button {
-    top: 71.6px !important; /* Adjust position */
-    font-size: 28px !important;
-  }
-
-  .gamepad-button {
-    top: 134.7px !important; /* Adjust position */
-    font-size: 28px !important;
-  }
-
-  .icon-button {
-    font-size: 28px !important;
-  }
-
-  .animal-name {
-    font-size: 25px !important;
-  }
-
-  #animal-fact {
-    font-size: 19px !important;
-  }
-
-  .play-btn,
-  .reset-btn {
-    padding: 7px 13px !important;
-  }
-
-  .fa-play,
-  .fa-undo {
-    font-size: 19px;
-    margin-top: 4px;
-  }
-
-  #ar-button {
-    left: 7px;
-  }
-
-  .ar-img {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-@media (max-width: 480px) {
-  #info-box {
-    width: 280px !important;
-    right: 20px !important;
-  }
-
-  .memory-box {
-    width: 78%;
-    height: 70%;
-  }
-
-  #memory-game-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-  }
-
-  .memory-card {
-    width: 70px;
-    height: 70px;
-  }
-
-  /* For mobile devices */
-  .icon-button {
-    padding: 6px;
-    font-size: 24px !important;
-  }
-
-  .share-button {
-    top: 75px !important; /* Adjust position */
-  }
-
-  .gamepad-button {
-    top: 137px !important; /* Adjust position */
-  }
-
-  .animal-name {
-    font-size: 22px !important;
-  }
-
-  #animal-fact {
-    font-size: 17px !important;
-  }
-
-  .play-btn,
-  .reset-btn {
-    padding: 6px 12px !important;
-  }
-
-  .fa-play,
-  .fa-undo {
-    font-size: 18px;
-    margin-top: 5px;
-  }
-
-  .ar-img {
-    width: 40px;
-    height: 40px;
-  }
-
-  #ar-button {
-    left: 12px;
-  }
-}
-
-@media (min-width: 420px) and (max-width: 480px) {
-  .i-btn {
-    top: 11.4px !important;
-  }
-
-  .share-button {
-    top: 71.6px !important; /* Adjust position */
-  }
-
-  .gamepad-button {
-    top: 134.7px !important; /* Adjust position */
-  }
-}
-
-@media (min-width: 320px) and (max-width: 420px) {
-  #memory-game-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    margin-left: 4px !important;
-  }
-
-  .memory-card {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (min-width: 320px) and (max-width: 420px) {
-  #memory-game-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    margin-left: 4px !important;
-  }
-
-  .memory-card {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (min-width: 320px) and (max-width: 360px) {
-  #memory-game-grid {
-    margin-left: 3px !important;
-  }
-
-  .memory-card {
-    width: 55px;
-    height: 55px;
-  }
-
-  h3.game-head {
-    font-size: 19px;
-    margin-bottom: 0px;
-  }
-
-  #score {
-    font-size: 21px;
-    margin-top: 14px;
-  }
-
-  #turns,
-  #timer {
-    font-size: 14px;
-  }
-
-  #close-memory-box {
-    right: 0px;
-  }
-}
-
-@media (min-width: 350px) and (max-width: 360px) {
-  #memory-game-grid {
-    margin-left: 4px !important;
-  }
-}
-
-@media (min-width: 430px) and (max-width: 480px) {
-  #score {
-    font-size: 21px;
-    margin-top: 14px;
-  }
-
-  #memory-game-grid {
-    margin-left: 11px !important;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 600px) {
-  #memory-game-grid {
-    grid-template-columns: repeat(4, 1fr);
-    margin-left: 13px !important;
-  }
-
-  h3.game-head {
-    font-size: 22px;
-    margin-bottom: 0px;
-  }
-
-  #score {
-    font-size: 23px;
-    margin-top: 17px;
-  }
-}
-
-@media (min-width: 800px) and (max-width: 1000px) {
-  #memory-game-grid {
-    grid-template-columns: repeat(4, 1fr);
-    margin-left: 13px !important;
-  }
-
-  h3.game-head {
-    font-size: 30px;
-    margin-bottom: 0px;
-  }
-
-  #score {
-    font-size: 28px;
-  }
-
-  .game-section {
-    margin: 10px;
-  }
-
-  .memory-card {
-    width: 110px;
-    height: 110px;
-  }
-
-  #turns,
-  #timer {
-    font-size: 20px;
-  }
-
-  .fa-volume-up,
-  .fa-volume-down,
-  .fa-code,
-  .fa-camera,
-  .fa-gamepad,
-  .fa-image,
-  .fa-info-circle,
-  .fa-info {
-    font-size: 29px;
-  }
-
-  .share-button {
-    top: 71.4px !important;
-  }
-
-  .gamepad-button {
-    top: 131.4px !important;
-  }
-
-  .i-btn {
-    top: 10.4px !important;
-  }
-
-  .ar-img {
-    width: 46px;
-    height: 46px;
-  }
-
-  #ar-button {
-    left: 9px;
-  }
+button:hover:before {
+  top: -30px;
+  left: -30px;
 }

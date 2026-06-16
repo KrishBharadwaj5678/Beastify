@@ -3,350 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <!-- Model Viewer -->
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js"
-    ></script>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href=".././favicon_io/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href=".././favicon_io/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href=".././favicon_io/favicon-16x16.png"
-    />
-    <link rel="manifest" href=".././favicon_io/site.webmanifest" />
-    <title>Beastify</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="../styles/index.css" />
+    <title>Beastify | Interactive Animal Experience</title>
   </head>
-  <body>
-    <!-- Button to toggle skybox and exposure -->
-    <button id="toggle-skybox-button" class="icon-button">
-      <i class="fas fa-image"></i>
-    </button>
+  <body class="bg-[#edece8] w-full h-screen">
+    <!-- Top Left Blob -->
+    <div class="blob"></div>
 
-    <!-- Horn button to play horn sound -->
-    <button id="horn-button" class="icon-button">
-      <i class="fas fa-volume-up"></i>
-    </button>
+    <!-- Secondary Blob -->
+    <div class="wavy hidden lg:block"></div>
 
-    <!-- Info button to toggle animal facts -->
-    <button id="info-button" class="icon-button i-btn">
-      <i class="fas fa-info-circle"></i>
-    </button>
-
-    <!-- Share button -->
-    <button id="share-button" class="icon-button share-button">
-      <i class="fas fa-share-alt"></i>
-    </button>
-
-    <!-- Info box that will toggle visibility -->
-    <div id="info-box">
-      <h3 class="animal-name text-center mb-1 text-xl"></h3>
-      <p id="animal-fact" class="text-md">
-        Lions are powerful big cats known for their majestic manes and
-        dominance. They are social animals that live in groups called prides.
-      </p>
-
-      <!-- Play, Pause, and Reset Buttons -->
-      <div class="flex justify-center gap-3">
-        <button id="play-button" class="play-btn">
-          <i class="fas fa-play"></i>
-          <!-- Play Icon -->
-        </button>
-        <button id="reset-button" class="reset-btn">
-          <i class="fas fa-undo"></i>
-          <!-- Reset Icon -->
-        </button>
-      </div>
-    </div>
-
-    <!-- Screenshot button -->
-    <button id="screenshot-button" class="icon-button">
-      <i class="fas fa-camera"></i>
-    </button>
-
-    <!-- Memory Game Box -->
-    <div id="memory-box" class="memory-box">
-      <h3 class="text-xl md:text-2xl font-semibold text-white mb-4 game-head">
-        Match The Animals
-      </h3>
-
-      <button
-        id="close-memory-box"
-        class="absolute top-5 right-4 text-white bg-red-600 p-2 md:w-9 md:h-9 rounded-md hover:bg-red-700 transition flex items-center justify-center w-7 h-7"
-      >
-        <i class="fas fa-times text-lg md:text-2xl"></i>
-        <!-- Font Awesome Cross Icon -->
-      </button>
-
-      <div
-        id="score"
-        class="text-white text-lg md:text-2xl font-semibold mt-5 text-orange"
-      >
-        Score: 0
-      </div>
-
-      <div class="flex justify-between items-center game-section">
-        <div
-          id="turns"
-          class="bg-blue-500 p-2 md:p-3 rounded-lg shadow-lg font-semibold text-md md:text-lg mt-6"
-        >
-          Turns: 0
-        </div>
-        <!-- Display number of turns -->
-        <div
-          id="timer"
-          class="bg-green-500 p-2 md:p-3 rounded-lg shadow-lg font-semibold text-md md:text-lg mt-6"
-        >
-          Time: 0
-        </div>
-        <!-- Display timer -->
-      </div>
-
-      <div id="memory-game-grid"></div>
-      <!-- This will hold the memory cards -->
-    </div>
-
-    <!-- Gamepad button -->
-    <button id="info-button" class="icon-button gamepad-button">
-      <i class="fas fa-gamepad"></i>
-    </button>
-
-    <div></div>
-
-    <model-viewer
-      id="model-viewer"
-      camera-controls
-      touch-action="pan-y"
-      autoplay
-      ar
-      scale="1 1 1"
-      shadow-intensity="2"
-      src="https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Lion/lion.glb"
-      ios-src="https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Lion/lion.usdz"
-      alt="Animals"
-      style="width: 100vw; height: 100vh"
-      exposure="1"
-      vr
-      vr-mode-ui
+    <!-- Main Content -->
+    <div
+      class="main flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-25 py-12 md:py-16 lg:py-20"
     >
-      <button id="ar-button" class="icon-button" slot="ar-button">
-        <img
-          src="https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/images/ar.png"
-          class="ar-img"
-          alt="AR Icon"
-        />
-      </button>
-    </model-viewer>
+      <!-- Left Content -->
+      <div class="left w-full lg:w-1/2 text-center lg:text-left mt-35">
+        <h1
+          class="heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
+        >
+          Connect with Animals Like <br />
+          Never Before
+        </h1>
 
-    <div class="slider">
-      <div class="slides">
-        <!-- Lion -->
-        <button
-          class="slide selected"
-          onclick="switchSrc(this, 0)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Lion/lion.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Rhino -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 1)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Rhino/rhino.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Polar Bear -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 2)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/PolarBear/polarBear.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Ostrich -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 3)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Ostrich/ostrich.jpg);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Camel -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 4)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Camel/camel.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Dog -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 5)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Dog/dog.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Sheep -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 6)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Sheep/sheep.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Texas Longhorn -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 7)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/TexasLonghorn/texaslonghorn.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Jaguar -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 8)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Jaguar/jaguar.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- African Buffalo -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 9)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/AfricanBuffalo/buffalo.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Gazella -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 10)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Gazella/gazella.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Penguin -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 11)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Penguin/penguin.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Skunk -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 12)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Skunk/skunk.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Caracal Cat -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 13)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/CaracalCat/cat.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Tiger -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 14)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Tiger/tiger.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Flamingo -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 15)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Flamingo/flamingo.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Whale -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 16)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Whale/whale.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Shark -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 17)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Shark/shark.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Adult Turtle -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 18)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/AdultTurtle/adultTurtle.png);
-            background-size: cover;
-          "
-        ></button>
-        <!-- Snake -->
-        <button
-          class="slide"
-          onclick="switchSrc(this, 19)"
-          style="
-            background-image: url(https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/models/Snake/snake.png);
-            background-size: cover;
-          "
-        ></button>
+        <p
+          class="subhead mt-2 text-sm sm:text-base md:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0"
+        >
+          Discover the joy of connecting with animals through our interactive
+          platform. Explore, learn, and have fun with a variety of animal
+          designed to bring you closer to the animal kingdom.
+        </p>
+
+        <div class="mt-6">
+          <a href="./loader.html">
+            <button>Explore Now</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="right w-full lg:w-1/2 flex justify-center mt-10 lg:mt-28">
+        <img
+          class="w-[300px] sm:w-[400px] md:w-[550px] lg:w-[700px] xl:w-[800px] h-auto"
+          src="https://duijvlhczqtcbtnwvrvm.supabase.co/storage/v1/object/public/Beastify/images/animals.png"
+          alt="Animals"
+        />
       </div>
     </div>
-
-    <!-- Confetti Js -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script type="module" src="../scripts/index.js" defer></script>
   </body>
 </html>
