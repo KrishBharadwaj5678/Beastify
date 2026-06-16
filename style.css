@@ -115,8 +115,8 @@ model-viewer {
   text-align: center;
   overflow: hidden;
   position: absolute;
-  bottom: 16px;
-  margin: 0px 0px 0px 20px;
+  bottom: 11px;
+  margin: 0px 0px 0px 20px !important;
 }
 
 .slides {
@@ -141,6 +141,40 @@ model-viewer {
   border-radius: 10px;
   border: none;
   display: flex;
+}
+
+/* Slidebar */
+.slides::-webkit-scrollbar {
+  height: 6px;
+}
+
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slides::-webkit-scrollbar-thumb {
+  background-color: #eeeeee;
+  border-radius: 10px;
+  border: none;
+}
+
+.slides::-webkit-scrollbar-thumb:hover {
+  background-color: #eeeeee;
+}
+
+.slides::-webkit-scrollbar-thumb:active {
+  background-color: #eeeeee;
+}
+
+/* Remove scrollbar corner/background */
+.slides::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+.slides {
+  scrollbar-width: thin;
+  scrollbar-color: #eeeeee transparent;
 }
 
 .slide.selected {
@@ -239,7 +273,7 @@ button#close-memory-box {
   height: 90%;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
   z-index: 10;
   overflow: auto;
 }
@@ -249,7 +283,7 @@ button#close-memory-box {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 4 columns for 20 cards */
   grid-template-rows: repeat(6, 1fr); /* 5 rows */
-  gap: 10px; /* Adjust gap between cards */
+  gap: 9px; /* Adjust gap between cards */
   margin-top: 20px;
 }
 
@@ -257,7 +291,6 @@ button#close-memory-box {
 .memory-card {
   width: 100px;
   height: 100px;
-  background-color: #ccc;
   position: relative;
   cursor: pointer;
   transition: transform 0.5s ease;
@@ -314,12 +347,13 @@ button#close-memory-box {
   transform: rotateY(180deg);
 }
 
-/* Copy Code Button */
-.copy-button {
+/* Share Button */
+.share-button {
   position: absolute;
-  top: 70px !important;
-  right: 12px !important;
-  color: #4285f4; /* Customize color */
+  top: 69px !important;
+  right: 19px !important;
+  font-size: 25px !important;
+  color: #f4a261; /* Customize color */
 }
 
 /* Gamepad Button */
@@ -358,13 +392,11 @@ button#close-memory-box {
 }
 
 .play-btn,
-.pause-btn,
 .reset-btn {
   padding: 6px 11px !important;
 }
 
 .fa-play,
-.fa-pause,
 .fa-undo {
   font-size: 16px;
   margin-top: 4px;
@@ -446,7 +478,7 @@ button#close-memory-box {
     font-size: 28px !important;
   }
 
-  .copy-button {
+  .share-button {
     top: 71.6px !important; /* Adjust position */
     font-size: 28px !important;
   }
@@ -469,13 +501,11 @@ button#close-memory-box {
   }
 
   .play-btn,
-  .pause-btn,
   .reset-btn {
     padding: 7px 13px !important;
   }
 
   .fa-play,
-  .fa-pause,
   .fa-undo {
     font-size: 19px;
     margin-top: 4px;
@@ -518,7 +548,7 @@ button#close-memory-box {
     font-size: 24px !important;
   }
 
-  .copy-button {
+  .share-button {
     top: 75px !important; /* Adjust position */
   }
 
@@ -535,13 +565,11 @@ button#close-memory-box {
   }
 
   .play-btn,
-  .pause-btn,
   .reset-btn {
     padding: 6px 12px !important;
   }
 
   .fa-play,
-  .fa-pause,
   .fa-undo {
     font-size: 18px;
     margin-top: 5px;
@@ -562,7 +590,7 @@ button#close-memory-box {
     top: 11.4px !important;
   }
 
-  .copy-button {
+  .share-button {
     top: 71.6px !important; /* Adjust position */
   }
 
@@ -701,7 +729,7 @@ button#close-memory-box {
     font-size: 29px;
   }
 
-  .copy-button {
+  .share-button {
     top: 71.4px !important;
   }
 

@@ -7,219 +7,264 @@ const animalFact = document.getElementById("animal-fact");
 const animalName = document.querySelector("h3.animal-name");
 
 const playButton = document.getElementById("play-button");
-const pauseButton = document.getElementById("pause-button");
 const resetButton = document.getElementById("reset-button");
 const screenshotButton = document.getElementById("screenshot-button");
-const copyButton = document.querySelector("button.copy-button");
+const shareButton = document.getElementById("share-button");
 
 let audio = null;
 let isAudioPlaying = false;
 let currentModelIndex = 0;
 let narrationAudio = null;
 
+let modelBaseName;
+
 // Animals Data
 const modelData = [
   {
     animalName: "Lion",
     modelName: "Lion",
-    skyboxUrl: "./models/Lion/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene1.jpg",
     hornSoundUrl: "./models/Lion/lion.mp3",
     narrationSoundUrl: "./models/Lion/lionNarration.mp3",
     folder: "./models/Lion",
+    exposure: 1,
     description:
       "Lions are powerful big cats known for their majestic manes and dominance.",
   },
   {
     animalName: "Rhino",
     modelName: "Rhino",
-    skyboxUrl: "./models/Rhino/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene2.jpg",
     hornSoundUrl: "./models/Rhino/rhino.mp3",
     narrationSoundUrl: "./models/Rhino/rhinoNarration.mp3",
     folder: "./models/Rhino",
+    exposure: 1,
     description:
       "Rhinos are large, herbivorous mammals known for their thick skin and iconic horn.",
   },
   {
     animalName: "Polar Bear",
-    modelName: "Bear",
-    skyboxUrl: "./models/Polar/scene.jpg",
-    hornSoundUrl: "./models/Polar/bear.mp3",
-    narrationSoundUrl: "./models/Polar/polarNarration.mp3",
-    folder: "./models/Polar",
+    modelName: "PolarBear",
+    skyboxUrl: "./assets/skybox/scene3.jpg",
+    hornSoundUrl: "./models/PolarBear/polarBear.mp3",
+    narrationSoundUrl: "./models/PolarBear/polarBearNarration.mp3",
+    folder: "./models/PolarBear",
+    exposure: 1,
     description:
       "Polar bears are large marine mammals adapted to Arctic life, known for their thick fur and strong swimming abilities.",
   },
   {
     animalName: "Ostrich",
     modelName: "Ostrich",
-    skyboxUrl: "./models/Ostrich/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene4.jpg",
     narrationSoundUrl: "./models/Ostrich/ostrichNarration.mp3",
     hornSoundUrl: "./models/Ostrich/ostrich.mp3",
     folder: "./models/Ostrich",
+    exposure: 1.2,
     description:
       "Ostriches are the world's largest birds, known for their fast running speed and flightless nature.",
   },
   {
     animalName: "Camel",
     modelName: "Camel",
-    skyboxUrl: "./models/Camel/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene5.jpg",
     narrationSoundUrl: "./models/Camel/camelNarration.mp3",
     hornSoundUrl: "./models/Camel/camel.mp3",
     folder: "./models/Camel",
+    exposure: 1.4,
     description:
       "Camels are desert animals which stores fat for energy, and their ability to survive harsh conditions.",
   },
   {
     animalName: "Dog",
     modelName: "Dog",
-    skyboxUrl: "./models/Dog/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene6.jpg",
     narrationSoundUrl: "./models/Dog/dogNarration.mp3",
     hornSoundUrl: "./models/Dog/dog.mp3",
     folder: "./models/Dog",
+    exposure: 0.8,
     description:
       "Dogs are loyal and intelligent companions, often known as man's best friend. ",
   },
   {
     animalName: "Sheep",
     modelName: "Sheep",
-    skyboxUrl: "./models/Sheep/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene7.jpg",
     narrationSoundUrl: "./models/Sheep/sheepNarration.mp3",
     hornSoundUrl: "./models/Sheep/sheep.mp3",
     folder: "./models/Sheep",
+    exposure: 1.1,
     description:
       "Sheep are domesticated herbivores known for their wool, which is used for textiles.",
   },
   {
     animalName: "Texas Longhorn",
     modelName: "TexasLonghorn",
-    skyboxUrl: "./models/TexasLonghorn/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene8.jpg",
     narrationSoundUrl: "./models/TexasLonghorn/texasNarration.mp3",
     hornSoundUrl: "./models/TexasLonghorn/texas.mp3",
     folder: "./models/TexasLonghorn",
+    exposure: 1.2,
     description:
       "Texas Longhorns are a breed of cattle known for their distinctive long, curved horns and hardy nature.",
   },
   {
     animalName: "Jaguar",
     modelName: "Jaguar",
-    skyboxUrl: "./models/Jaguar/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene9.jpg",
     narrationSoundUrl: "./models/Jaguar/jaguarNarration.mp3",
     hornSoundUrl: "./models/Jaguar/jaguar.mp3",
     folder: "./models/Jaguar",
+    exposure: 1.1,
     description:
       "Jaguars are powerful big cats native to the Americas, known for their spotted coats and strength as apex predators.",
   },
   {
     animalName: "American Buffalo",
     modelName: "buffalo",
-    skyboxUrl: "./models/AfricanBuffalo/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene10.jpg",
     narrationSoundUrl: "./models/AfricanBuffalo/buffaloNarration.mp3",
     hornSoundUrl: "./models/AfricanBuffalo/buffalo.mp3",
     folder: "./models/AfricanBuffalo",
+    exposure: 1,
     description:
       "American buffalo are large, shaggy mammals native to North America, known for their iconic and strong build.",
   },
   {
     animalName: "Gazella",
     modelName: "gazella",
-    skyboxUrl: "./models/Gazella/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene11.jpg",
     narrationSoundUrl: "./models/Gazella/gazellaNarration.mp3",
     hornSoundUrl: "./models/Gazella/gazella.mp3",
     folder: "./models/Gazella",
+    exposure: 1.1,
     description:
       "Gazelles are graceful, fast-running antelopes found in Africa and Asia, known for their slender bodies and agility.",
   },
   {
     animalName: "Penguin",
     modelName: "Penguin",
-    skyboxUrl: "./models/Penguin/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene12.jpg",
     narrationSoundUrl: "./models/Penguin/penguinNarration.mp3",
     hornSoundUrl: "./models/Penguin/penguin.mp3",
     folder: "./models/Penguin",
+    exposure: 1.1,
     description:
       "Penguins are flightless birds that thrive in cold climates, known for their excellent swimming abilities.",
   },
   {
     animalName: "Skunk",
     modelName: "Skunk",
-    skyboxUrl: "./models/Skunk/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene13.jpg",
     narrationSoundUrl: "./models/Skunk/skunkNarration.mp3",
     hornSoundUrl: "./models/Skunk/skunk.mp3",
     folder: "./models/Skunk",
+    exposure: 1.1,
     description:
       "Skunks are small mammals known for their black and white fur and the potent spray they use as a defense mechanism.",
   },
   {
     animalName: "Caracal Cat",
     modelName: "cat",
-    skyboxUrl: "./models/CaracalCat/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene14.jpg",
     narrationSoundUrl: "./models/CaracalCat/catNarration.mp3",
     hornSoundUrl: "./models/CaracalCat/cat.mp3",
     folder: "./models/CaracalCat",
+    exposure: 1.1,
     description:
       "Caracal cats are wild felines with distinctive tufted ears and exceptional agility, native to Africa.",
   },
   {
     animalName: "White Tiger",
     modelName: "Tiger",
-    skyboxUrl: "./models/Tiger/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene15.jpg",
     narrationSoundUrl: "./models/Tiger/tigerNarration.mp3",
     hornSoundUrl: "./models/Tiger/tiger.mp3",
     folder: "./models/Tiger",
+    exposure: 1.1,
     description:
       "White tigers are rare, strikingly beautiful big cats with white fur and black stripes, known for their power and grace.",
   },
   {
     animalName: "Flamingo",
     modelName: "flamingo",
-    skyboxUrl: "./models/Flamingo/scene.jpg",
+    skyboxUrl: "./assets/skybox/scene16.jpg",
     narrationSoundUrl: "./models/Flamingo/flamingoNarration.mp3",
     hornSoundUrl: "./models/Flamingo/flamingo.mp3",
     folder: "./models/Flamingo",
+    exposure: 1,
     description:
       "Flamingos are tall, wading birds known for their vibrant pink feathers and distinctive curved beaks.",
   },
   {
     animalName: "Whale",
     modelName: "Whale",
-    skyboxUrl: "./models/Whale/scene.jpeg",
+    skyboxUrl: "./assets/skybox/scene17.jpeg",
     narrationSoundUrl: "./models/Whale/whaleNarration.mp3",
     hornSoundUrl: "./models/Whale/whale.mp3",
     folder: "./models/Whale",
+    exposure: 1.1,
     description:
       "Whales are massive marine mammals known for their size and complex communication.",
   },
   {
     animalName: "Shark",
     modelName: "Shark",
-    skyboxUrl: "./models/Shark/scene.jpeg",
+    skyboxUrl: "./assets/skybox/scene18.jpeg",
     narrationSoundUrl: "./models/Shark/sharkNarration.mp3",
     hornSoundUrl: "./models/Shark/shark.mp3",
     folder: "./models/Shark",
+    exposure: 1.1,
     description:
       "Sharks are apex predators with sharp teeth and excellent senses, playing a key role in marine ecosystems.",
   },
+  {
+    animalName: "Adult Turtle",
+    modelName: "adultTurtle",
+    skyboxUrl: "./assets/skybox/scene18.jpeg",
+    narrationSoundUrl: "./models/AdultTurtle/adultTurtleNarration.mp3",
+    hornSoundUrl: "./models/AdultTurtle/adultTurtle.mp3",
+    folder: "./models/AdultTurtle",
+    exposure: 1.7,
+    description:
+      "An adult Turtle is a slow-moving reptile known for its hard protective shell, strong limbs, and long lifespan.",
+  },
+  {
+    animalName: "Rattle Snake",
+    modelName: "snake",
+    skyboxUrl: "./assets/skybox/scene4.jpg",
+    narrationSoundUrl: "./models/Snake/snakeNarration.mp3",
+    hornSoundUrl: "./models/Snake/snake.mp3",
+    folder: "./models/Snake",
+    exposure: 1,
+    description:
+      "Rattle snakes are venomous snakes known for the distinctive rattle at the end of their tails, which they use as a warning signal to potential threats.",
+  },
 ];
 
-// Copy Feature
-copyButton.addEventListener("click", () => {
-  let code = `<iframe
-                src="https://beastify.onrender.com/"
-                width="500px"
-                height="500px"
-                style="border: none;"
-              ></iframe>`;
+// Share Feature
+shareButton.addEventListener("click", async () => {
+  const shareData = {
+    title: document.title,
+    text: "Check out Beastify!",
+    url: window.location.href,
+  };
 
-  // Create a temporary textarea element to hold the code
-  const textarea = document.createElement("textarea");
-  document.body.appendChild(textarea);
-  textarea.value = code;
-  textarea.select();
-  document.execCommand("copy");
-
-  // Remove the temporary textarea
-  document.body.removeChild(textarea);
-  alert("Code Copied!");
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (error) {
+      console.error("Share failed:", error);
+    }
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard.");
+    } catch (error) {
+      console.error("Clipboard fallback failed:", error);
+      alert("Sharing is not supported in this browser.");
+    }
+  }
 });
 
 // Initial Audio for first model by default
@@ -232,14 +277,21 @@ animalName.textContent = modelData[0].animalName;
 window.switchSrc = (element, modelIndex) => {
   const model = modelData[modelIndex];
   const modelFolder = model.folder;
-  const modelBaseName = model.modelName.toLowerCase();
+  modelBaseName = model.modelName.toLowerCase();
 
   modelViewer.src = `${modelFolder}/${modelBaseName}.glb`;
   modelViewer.poster = `${modelFolder}/${modelBaseName}.png`;
   modelViewer.iosSrc = `${modelFolder}/${modelBaseName}.usdz`;
+  modelViewer.exposure = model.exposure;
 
-  if (modelBaseName == "whale" || modelBaseName == "shark") {
+  if (
+    modelBaseName == "whale" ||
+    modelBaseName == "shark" ||
+    modelBaseName == "adultturtle"
+  ) {
     modelViewer.setAttribute("shadow-intensity", "0");
+  } else if (modelBaseName == "snake") {
+    modelViewer.setAttribute("shadow-intensity", "1.1");
   } else {
     modelViewer.setAttribute("shadow-intensity", "2");
   }
@@ -259,7 +311,7 @@ window.switchSrc = (element, modelIndex) => {
     narrationAudio.currentTime = 0; // Reset narration to the start
   }
 
-  // Update the horn sound (if needed)
+  // Update the animal sound (if needed)
   if (audio) {
     audio.pause();
   }
@@ -269,7 +321,7 @@ window.switchSrc = (element, modelIndex) => {
 
   // Set the Play button to active state
   playButton.disabled = false;
-  pauseButton.disabled = true;
+  // pauseButton.disabled = true;
   resetButton.disabled = true;
 };
 
@@ -284,20 +336,6 @@ playButton.addEventListener("click", () => {
 
     // Disable Play and enable Pause and Reset buttons
     playButton.disabled = true;
-    pauseButton.disabled = false;
-    resetButton.disabled = false;
-  }
-});
-
-// Pause button functionality
-pauseButton.addEventListener("click", () => {
-  if (narrationAudio) {
-    narrationAudio.pause(); // Pause narration
-    isNarrationPlaying = false;
-
-    // Disable Pause and enable Play and Reset buttons
-    playButton.disabled = false;
-    pauseButton.disabled = true;
     resetButton.disabled = false;
   }
 });
@@ -311,7 +349,6 @@ resetButton.addEventListener("click", () => {
 
     // Enable Play button and disable Pause/Reset buttons
     playButton.disabled = false;
-    pauseButton.disabled = true;
     resetButton.disabled = true;
   }
 });
@@ -342,7 +379,11 @@ toggleButton.addEventListener("click", () => {
     toggleButton.innerHTML = '<i class="fas fa-image"></i>';
   } else {
     modelViewer.setAttribute("skybox-image", model.skyboxUrl);
-    modelViewer.setAttribute("exposure", "5");
+
+    modelViewer.setAttribute("exposure", 5);
+    modelBaseName == "polarbear"
+      ? modelViewer.setAttribute("exposure", 1.7)
+      : modelViewer.setAttribute("exposure", 5);
     skyboxEnabled = true;
     toggleButton.innerHTML = '<i class="fas fa-image"></i>';
   }
@@ -382,7 +423,7 @@ infoButton.addEventListener("click", () => {
 const animalImages = [
   "./models/Lion/lion.png",
   "./models/Rhino/rhino.png",
-  "./models/Polar/bear.png",
+  "./models/PolarBear/polarBear.png",
   "./models/Ostrich/ostrich.png",
   "./models/Camel/camel.png",
   "./models/Dog/dog.png",
@@ -397,6 +438,8 @@ const animalImages = [
   "./models/Flamingo/flamingo.png",
   "./models/Whale/whale.png",
   "./models/Shark/shark.png",
+  "./models/AdultTurtle/adultTurtle.png",
+  "./models/Snake/snake.png",
 ];
 
 // Function to shuffle the array (Fisher-Yates shuffle algorithm)
@@ -416,9 +459,9 @@ let gameTime = 0; // Game time in seconds
 let timerInterval;
 let gameStarted = false;
 // Declare the audio variables
-const correctSound = new Audio("./assets/audio/correct.mp3");
-const incorrectSound = new Audio("./assets/audio/incorrect.mp3");
-const victorySound = new Audio("./assets/audio/victory.mp3");
+const correctSound = new Audio("./assets/sounds/correct.mp3");
+const incorrectSound = new Audio("./assets/sounds/incorrect.mp3");
+const victorySound = new Audio("./assets/sounds/victory.mp3");
 
 // Reset score function
 function resetScore() {
@@ -456,7 +499,7 @@ function updateTime() {
   const minutes = Math.floor(gameTime / 60); // Get minutes
   const seconds = gameTime % 60; // Get remaining seconds
   document.getElementById("timer").innerText =
-    `Time: ${minutes} min ${seconds} sec`;
+    minutes == 0 ? `${seconds} sec` : `${minutes} min ${seconds} sec`;
 }
 
 let shuffledImages = [];
@@ -498,7 +541,7 @@ function generateCards() {
     img.alt = `Animal Image ${index}`; // Add alt text for accessibility
     img.style.width = "100%"; // Ensure the image fills the card
     img.style.height = "100%"; // Ensure the image fills the card
-    img.style.objectFit = "contain"; // Cover the space within the card, maintaining aspect ratio
+    img.style.objectFit = "cover"; // Cover the space within the card, maintaining aspect ratio
     img.style.opacity = 0; // Initially hide the image
     img.loading = "lazy";
 
@@ -558,14 +601,6 @@ function checkMatch() {
     flippedCards = [];
 
     // Add green box shadow to matched cards
-    gsap.to(card1, {
-      boxShadow: "0 0 12px 5px green",
-      duration: 0.5,
-    });
-    gsap.to(card2, {
-      boxShadow: "0 0 12px 5px green",
-      duration: 0.5,
-    });
 
     // Play correct sound
     correctSound.play();

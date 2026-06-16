@@ -52,9 +52,9 @@
       <i class="fas fa-info-circle"></i>
     </button>
 
-    <!-- Copy code button -->
-    <button id="info-button" class="icon-button copy-button">
-      <i class="fas fa-code"></i>
+    <!-- Share button -->
+    <button id="share-button" class="icon-button share-button">
+      <i class="fas fa-share-alt"></i>
     </button>
 
     <!-- Info box that will toggle visibility -->
@@ -70,10 +70,6 @@
         <button id="play-button" class="play-btn">
           <i class="fas fa-play"></i>
           <!-- Play Icon -->
-        </button>
-        <button id="pause-button" class="pause-btn">
-          <i class="fas fa-pause"></i>
-          <!-- Pause Icon -->
         </button>
         <button id="reset-button" class="reset-btn">
           <i class="fas fa-undo"></i>
@@ -153,7 +149,7 @@
       vr-mode-ui
     >
       <button id="ar-button" class="icon-button" slot="ar-button">
-        <img src="./assets/images/ar.png" class="ar-img" />
+        <img src="./assets/icons/ar.png" class="ar-img" />
       </button>
     </model-viewer>
 
@@ -163,57 +159,81 @@
         <button
           class="slide selected"
           onclick="switchSrc(this, 0)"
-          style="background-image: url(&quot;./models/Lion/lion.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Lion/lion.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 1)"
-          style="background-image: url(&quot;./models/Rhino/rhino.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Rhino/rhino.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 2)"
-          style="background-image: url(&quot;./models/Polar/bear.png&quot;)"
+          style="
+            background-image: url(&quot;./models/PolarBear/polarBear.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 3)"
           style="
             background-image: url(&quot;./models/Ostrich/ostrich.png&quot;);
+            background-size: cover;
           "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 4)"
-          style="background-image: url(&quot;./models/Camel/camel.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Camel/camel.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 5)"
-          style="background-image: url(&quot;./models/Dog/dog.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Dog/dog.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 6)"
-          style="background-image: url(&quot;./models/Sheep/sheep.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Sheep/sheep.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 7)"
           style="
             background-image: url(&quot;./models/TexasLonghorn/texaslonghorn.png&quot;);
+            background-size: cover;
           "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 8)"
-          style="background-image: url(&quot;./models/Jaguar/jaguar.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Jaguar/jaguar.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 9)"
           style="
             background-image: url(&quot;./models/AfricanBuffalo/buffalo.png&quot;);
+            background-size: cover;
           "
         ></button>
         <button
@@ -221,6 +241,7 @@
           onclick="switchSrc(this, 10)"
           style="
             background-image: url(&quot;./models/Gazella/gazella.png&quot;);
+            background-size: cover;
           "
         ></button>
         <button
@@ -228,39 +249,72 @@
           onclick="switchSrc(this, 11)"
           style="
             background-image: url(&quot;./models/Penguin/penguin.png&quot;);
+            background-size: cover;
           "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 12)"
-          style="background-image: url(&quot;./models/Skunk/skunk.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Skunk/skunk.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 13)"
-          style="background-image: url(&quot;./models/CaracalCat/cat.png&quot;)"
+          style="
+            background-image: url(&quot;./models/CaracalCat/cat.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 14)"
-          style="background-image: url(&quot;./models/Tiger/tiger.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Tiger/tiger.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 15)"
           style="
             background-image: url(&quot;./models/Flamingo/flamingo.png&quot;);
+            background-size: cover;
           "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 16)"
-          style="background-image: url(&quot;./models/Whale/whale.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Whale/whale.png&quot;);
+            background-size: cover;
+          "
         ></button>
         <button
           class="slide"
           onclick="switchSrc(this, 17)"
-          style="background-image: url(&quot;./models/Shark/shark.png&quot;)"
+          style="
+            background-image: url(&quot;./models/Shark/shark.png&quot;);
+            background-size: cover;
+          "
+        ></button>
+        <button
+          class="slide"
+          onclick="switchSrc(this, 18)"
+          style="
+            background-image: url(&quot;./models/AdultTurtle/adultTurtle.png&quot;);
+            background-size: cover;
+          "
+        ></button>
+        <button
+          class="slide"
+          onclick="switchSrc(this, 19)"
+          style="
+            background-image: url(&quot;./models/Snake/snake.png&quot;);
+            background-size: cover;
+          "
         ></button>
       </div>
     </div>
