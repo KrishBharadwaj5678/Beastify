@@ -1,2 +1,0 @@
-- Add seo tags in index.html
-- fix deployment issue on render
