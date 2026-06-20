@@ -1,7 +1,7 @@
 ## 🦁 Beastify
 Beastify is an interactive Augmented Reality (AR) website that allows users to explore and interact with 3D animal models in unique and immersive ways. This project aims to provide an engaging and educational experience for users by integrating various features related to animals.
 
-![Beastify](https://github.com/KrishBharadwaj5678/Beastify/raw/main/BeastifyDemo.png)
+![BeastifyDemo](https://github.com/KrishBharadwaj5678/Beastify/raw/main/BeastifyDemo.png)
 
 ## ✨ Features
 
@@ -20,41 +20,28 @@ Beastify is an interactive Augmented Reality (AR) website that allows users to e
 
 ## 🛠️ Tech Stack
 
-| **Technology**       | **Description**                                |
-| -------------------- | ---------------------------------------------- |
-| 💻 **JavaScript**    | Adds interactivity and dynamic behavior        |
-| 🌐 **HTML**          | Provides structure for the web application     |
-| 🎨 **CSS**           | Handles styling and layout design              |
-| 🖥️ **Model Viewer** | Enables 3D model visualization and interaction |
+| **Technology**           | **Description**                                   |
+| ------------------------ | ------------------------------------------------- |
+| 💻 **JavaScript**        | Adds interactivity and dynamic behavior           |
+| 🌐 **HTML**              | Provides structure for the web application        |
+| 🎨 **CSS**               | Handles styling and layout design                 |
+| 🖥️ **Model Viewer**     | Enables 3D model visualization and interaction    |
+| 🗄️ **Supabase Storage** | Stores and serves application assets in the cloud |
 
 ---
 
 ## 🛠️ Installation 
 
-To run Beastify locally, follow these steps:
-
-1. Clone the repository:
+### 1️⃣ Clone the repository
 
    ```bash
    git clone https://github.com/KrishBharadwaj5678/Beastify.git
    ```
 
-2. Navigate to the project directory:
+### 2️⃣ Navigate to project directory
 
    ```bash
    cd Beastify
    ```
-   
-3. Open the app in your browser.
 
----
-
-## Contributing 🤝
-
-Want to contribute? Here's how:
-
-1. 🍴 Fork the repository.
-2. 🌿 Create a new branch (`git checkout -b feature-name`).
-3. ✍️ Make your changes and commit them (`git commit -am 'Add feature-name'`).
-4. 🚀 Push to your branch (`git push origin feature-name`).
-5. 🔄 Submit a pull request to merge into the main branch.
+### 3️⃣ Open the app in your browser.
